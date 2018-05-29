@@ -1,9 +1,9 @@
-import { Container, Icon } from 'native-base';
-import React, { Component } from 'react';
-import { FlatList, Platform, Text, TouchableOpacity, View, focused, Image } from 'react-native';
-// import GetLink from './GetLink';
+import { Container } from 'native-base';
+import React from 'react';
+import { FlatList, Image, Text, TouchableOpacity, View } from 'react-native';
+import TinNoiBat from './tin_noi_bat';
 
-export default class Fonts extends Component {	
+export default class VhuNews extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -16,7 +16,7 @@ export default class Fonts extends Component {
 			loading: true,
 			refreshing: true,
 		});
-		return fetch('http://itcvhu.me/PortalVHU/getSuKien.php')
+		return fetch('http://itcvhu.me/PortalVHU/getNews.php')
 			.then(response => response.json())
 			.then(responseJson => {
 				this.setState({
@@ -27,7 +27,7 @@ export default class Fonts extends Component {
 			});
 	}
 	makeRemoteRequest = () => {
-		const url = 'http://itcvhu.me/PortalVHU/getSuKien.php';
+		const url = 'http://itcvhu.me/PortalVHU/getNews.php';
 		this.setState({ loading: true });
 		fetch(url)
 			.then(response => response.json())
@@ -52,12 +52,13 @@ export default class Fonts extends Component {
 	};
 	render() {
 		const { navigate } = this.props.navigation;
-
 		return (
-			<Container style={{ backgroundColor: 'white' }}>			
-				<Container style={{ backgroundColor: 'white' }}>
+			<Container style={{ backgroundColor: 'white', flex: 1 }}>
+				<View style={{ backgroundColor: 'white', flex: 4 }}>
+					<TinNoiBat />
+				</View>
+				<View style={{ backgroundColor: 'white', flex: 6 }}>
 					<FlatList
-          
 						data={this.state.mang}
 						renderItem={({ item }) => (
 							<TouchableOpacity
@@ -70,44 +71,35 @@ export default class Fonts extends Component {
 									navigate('GetLink', {
 										link: item.LINK,
 										tieude: item.TIEUDE,
+										linkdemo: 'https://www.facebook.com/sharer/sharer.php?u=',
 									});
 								}}
 							>
-								<Image
-									source={{ uri: item.URL }}
-									style={{ height: 200, width: null, flex: 1 }}
-								/>
 								<View
 									style={{
-										flex: 1,
 										flexDirection: 'row',
 										marginTop: 5,
 										marginBottom: 5,
 									}}
 								>
-									<View style={{ flex: 1, paddingLeft: 15 }}>
-										<Text style={{ fontSize: 50, color: '#0099ff' }}>
-											{item.NGAY}
-										</Text>
-										<Text
-											style={{
-												fontWeight: '400',
-												fontSize: 17,
-												lineHeight: 17,
-												color: '#0099ff',
-											}}
-										>
-											{item.THANG}
-										</Text>
-									</View>
 									<View
 										style={{
 											flexDirection: 'column',
-											flex: 3,
-											paddingRight: 5,
+											flex: 2,
+											paddingRight: 10,
+											paddingLeft: 5,
 										}}
 									>
 										<View style={{ flex: 1, marginTop: 5 }}>
+											<Text
+												style={{
+													fontWeight: '100',
+													fontSize: 12,
+													color: '#9E9E9E',
+												}}
+											>
+												{item.TIME}
+											</Text>
 											<Text
 												style={{
 													color: 'black',
@@ -132,13 +124,19 @@ export default class Fonts extends Component {
 											</Text>
 										</View>
 									</View>
+									<View style={{ flex: 1 }}>
+										<Image
+											source={{ uri: item.URL }}
+											style={{ flex: 1, width: 125, height: 125 }}
+										/>
+									</View>
 								</View>
 							</TouchableOpacity>
 						)}
 						refreshing={this.state.refreshing}
 						onRefresh={this.handleRefresh}
 					/>
-				</Container>
+				</View>
 			</Container>
 		);
 	}

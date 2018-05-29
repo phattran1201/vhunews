@@ -1,136 +1,183 @@
-import React from 'react';
-import Expo, { AppLoading, Asset, Font } from 'expo';
 import { FontAwesome, Ionicons } from '@expo/vector-icons';
-import { View, Image, Dimensions } from 'react-native';
-import { DrawerNavigator, DrawerItems } from 'react-navigation';
-
-import Components from './src/drawer/components';
-import Ratings from './src/drawer/ratings';
+import Expo, { AppLoading, Asset, Font,LinearGradient } from 'expo';
+import React from 'react';
+import { Dimensions, Image, View,StyleSheet,Text } from 'react-native';
+import { DrawerItems, DrawerNavigator } from 'react-navigation';
+import HoiDap from './src/drawer/hoidap';
 import Pricing from './src/drawer/pricing';
-import Login from './src/drawer/login';
 import Profile from './src/drawer/profile';
-import Lists from './src/drawer/lists';
+import Ratings from './src/drawer/ratings';
+// import Lists from './src/drawer/lists';
 import Settings from './src/drawer/settings';
+import Home from './src/views/Home';
+import Thoat from './src/drawer/thoat';
+import Login from './src/views/login';
+import VhuNewsTab from './src/drawer/tintuc';
+import SuKienTab from './src/drawer/sukien';
+import HoatDongTab from './src/views/hoat_dong';
+import ThongBaoTab from './src/drawer/thongbao';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
 const CustomDrawerContentComponent = props => (
-  <View style={{ flex: 1, backgroundColor: '#43484d' }}>
-    <View style={{ marginTop: 40, justifyContent: 'center', alignItems: 'center' }}>
-      <Image
-        source={require('./src/images/logo.png')}
-        style={{ width: SCREEN_WIDTH * 0.57 }}
-        resizeMode="contain"
-      />
-    </View>
-    <View style={{ marginLeft: 10 }}>
-      <DrawerItems {...props} />
-    </View>
-  </View>
+	<LinearGradient colors={['#001eb3', '#001166']} start= {[1, 0]} style={{ flex: 1 }}>
+		<View
+			style={{ paddingTop: 40, justifyContent: 'center', alignItems: 'center', }}
+		>
+			
+			<View style={styles.titleContainer}>
+				<View style={{ flexDirection: 'row' }}>
+					<Text style={styles.titleText}>CỔNG THÔNG TIN</Text>
+				</View>
+				<View style={{ marginLeft: 40 }}>
+					<Text style={styles.titleText}>ĐẠI HỌC VĂN HIẾN</Text>
+				</View>				
+			</View>
+			{/* <Image				
+				source={require('./assets/icons/icon.png')}
+				style={{ width: SCREEN_WIDTH * 0.2 }}
+				resizeMode="contain"
+			/> */}
+		</View>
+		<View style={{ marginLeft: 10 }}>
+			<DrawerItems {...props} />
+		</View>
+	</LinearGradient>
 );
 
-
 const MainRoot = DrawerNavigator(
-  {
-    // Login: {
-    //   path: '/login',
-    //   screen: Login,
-    // },
-    Profile: {
-      path: '/profile',
-      screen: Profile,
-    },
-    Lists: {
-      path: '/lists',
-      screen: Lists,
-    },
-    Components: {
-      path: '/components',
-      screen: Components,
-    },
-    Ratings: {
-      path: '/ratings',
-      screen: Ratings,
-    },
-    Pricing: {
-      path: '/pricing',
-      screen: Pricing,
-    },
-    Settings: {
-      path: '/settings',
-      screen: Settings,
-    },
-  },
-  {
-    initialRouteName: 'Components',
-    contentOptions: {
-      activeTintColor: '#548ff7',
-      activeBackgroundColor: 'transparent',
-      inactiveTintColor: '#ffffff',
-      inactiveBackgroundColor: 'transparent',
-      labelStyle: {
-        fontSize: 15,
-        marginLeft: 0,
-      },
-    },
-    drawerWidth: SCREEN_WIDTH * 0.8,
-    contentComponent: CustomDrawerContentComponent,
-    drawerOpenRoute: 'DrawerOpen',
-    drawerCloseRoute: 'DrawerClose',
-    drawerToggleRoute: 'DrawerToggle',
-  }
+	{
+		Login: {
+			path: '/login',
+			screen: Login,
+		},
+		// Tabs: {
+		// 	path: '/Tabs',
+		// 	screen: Tabs,
+		// },
+		VhuNewsTab: {
+			screen: VhuNewsTab,
+     
+		},
+		ThongBaoTab: {
+			screen: ThongBaoTab,
+     
+		},
+	
+		SuKienTab: {
+			screen: SuKienTab,     
+    
+		},	
+		Profile: {
+			path: '/profile',
+			screen: Profile,
+		},
+		Hoidap: {
+			path: '/hoidap',
+			screen: HoiDap,
+		},
+		// Ratings: {
+		// 	path: '/ratings',
+		// 	screen: Ratings,
+		// },
+		// Pricing: {
+		// 	path: '/pricing',
+		// 	screen: Pricing,
+		// },
+		Settings: {
+			path: '/settings',
+			screen: Settings,
+		},
+		Thoat: {
+			path: '/thoat',
+			screen: Thoat,
+		},
+		// Home: {
+			
+		// 	screen: Home,
+		// },
+	},
+	{
+		initialRouteName: 'VhuNewsTab',
+		contentOptions: {
+			activeTintColor: '#0099ff',
+			activeBackgroundColor: 'transparent',
+			inactiveTintColor: '#fff',
+			inactiveBackgroundColor: 'transparent',
+			labelStyle: {
+				fontSize: 15,
+				marginLeft: 0,
+			},
+		},
+		drawerWidth: SCREEN_WIDTH * 0.8,
+		contentComponent: CustomDrawerContentComponent,
+		drawerOpenRoute: 'DrawerOpen',
+		drawerCloseRoute: 'DrawerClose',
+		drawerToggleRoute: 'DrawerToggle',
+	}
 );
 
 function cacheImages(images) {
-  return images.map(image => {
-    if (typeof image === 'string') {
-      return Image.prefetch(image);
-    } else {
-      return Asset.fromModule(image).downloadAsync();
-    }
-  });
+	return images.map(image => {
+		if (typeof image === 'string') {
+			return Image.prefetch(image);
+		} else {
+			return Asset.fromModule(image).downloadAsync();
+		}
+	});
 }
 
 function cacheFonts(fonts) {
-  return fonts.map(font => Font.loadAsync(font));
+	return fonts.map(font => Font.loadAsync(font));
 }
 
 export default class AppContainer extends React.Component {
-  state = {
-    isReady: false,
-  };
+	state = {
+		isReady: false,
+	};
 
-  async _loadAssetsAsync() {
-    const imageAssets = cacheImages([
-      require('./assets/images/bg_screen1.jpg'),
-      require('./assets/images/bg_screen2.jpg'),
-      require('./assets/images/bg_screen3.jpg'),
-      require('./assets/images/bg_screen4.jpg'),
-      require('./assets/images/user-cool.png'),
-      require('./assets/images/user-hp.png'),
-      require('./assets/images/user-student.png'),
-      require('./assets/images/avatar1.jpg'),
-    ]);
+	async _loadAssetsAsync() {
+		const imageAssets = cacheImages([
+			require('./assets/images/bg_screen1.jpg'),
+			require('./assets/images/bg_screen2.jpg'),
+			require('./assets/images/bg_screen3.jpg'),
+			require('./assets/images/bg_screen4.jpg'),
+			require('./assets/images/user-cool.png'),
+			require('./assets/images/user-hp.png'),
+			require('./assets/images/user-student.png'),
+			require('./assets/images/avatar1.jpg'),
+		]);
 
-    const fontAssets = cacheFonts([FontAwesome.font, Ionicons.font]);
+		const fontAssets = cacheFonts([FontAwesome.font, Ionicons.font]);
 
-    await Promise.all([...imageAssets, ...fontAssets]);
-  }
+		await Promise.all([...imageAssets, ...fontAssets]);
+	}
 
-  render() {
-    if (!this.state.isReady) {
-      return (
-        <AppLoading
-          startAsync={this._loadAssetsAsync}
-          onFinish={() => this.setState({ isReady: true })}
-          onError={console.warn}
-        />
-      );
-    }
-    return (
-      <MainRoot />
-    );
-  }
+	render() {
+		if (!this.state.isReady) {
+			return (
+				<AppLoading
+					startAsync={this._loadAssetsAsync}
+					onFinish={() => this.setState({ isReady: true })}
+					onError={console.warn}
+				/>
+			);
+		}
+		return <MainRoot />;
+	}
 }
 
 Expo.registerRootComponent(AppContainer);
+
+const styles = StyleSheet.create({
+	titleContainer: {
+		// height: 150,
+		backgroundColor: 'transparent',
+		justifyContent: 'center',
+	},
+	titleText: {
+		color: 'white',
+		fontSize: 18,
+	// fontFamily: 'regular',
+	},
+});

@@ -1,24 +1,23 @@
-import Expo from 'expo';
 import React from 'react';
 import { StackNavigator } from 'react-navigation';
 import { Icon } from 'react-native-elements';
 
-import ThongBao from '../views/thong_bao';
+import SuKienTab from '../tabs/SuKien';
 
-const ThongBaoDrawerItem = StackNavigator(
+const SuKienDrawerItem = StackNavigator(
 	{
-		Playground: { screen: ThongBao },
+		Playground: { screen: SuKienTab },
 	},
 	{
 		headerMode: 'none',
 	}
 );
 
-ThongBaoDrawerItem.navigationOptions = {
-	drawerLabel: 'ThongBao',
+SuKienDrawerItem.navigationOptions = {
+	drawerLabel: 'Sự Kiện',
 	drawerIcon: ({ tintColor }) => (
 		<Icon
-			name="list"
+			name="star"
 			size={30}
 			iconStyle={{
 				width: 30,
@@ -30,4 +29,4 @@ ThongBaoDrawerItem.navigationOptions = {
 	),
 };
 
-export default ListsDrawerItem;
+export default SuKienDrawerItem;

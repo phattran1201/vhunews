@@ -3,44 +3,44 @@ import React from 'react';
 import { FlatList, Platform, Text, TouchableOpacity, View, focused } from 'react-native';
 // import GetLink from './GetLink';
 
-export default class Icons extends React.Component {
-	static navigationOptions = ({ navigation }) => ({
-		headerLeft: (
-			<Icon
-				name={
-					Platform.OS === 'ios'
-						? `ios-menu${focused ? '' : '-outline'}`
-						: 'md-menu'
-				}
-				style={{ paddingLeft: 20, color: '#fff' }}
-				onPress={() => navigation.navigate('DrawerOpen')}
-			/>
-		),
-		title: 'THÔNG BÁO',
-		headerRight: (
-			<Icon
-				onPress={() => navigation.navigate({ routeName: 'HoiDap' })}
-				name={
-					Platform.OS === 'ios'
-						? `ios-chatbubbles${focused ? '' : '-outline'}`
-						: 'md-chatbubbles'
-				}
-				style={{ paddingRight: 20, color: '#fff' }}
-			/>
-		),
-		headerTitleStyle: {
-			textAlign: 'center',
-			flex: 1,
-			fontWeight: 'bold',
-			// fontStyle: 'italic',
-		},
-		headerStyle: {
-			backgroundColor: '#0099ff',
-			elevation: 0,
-			shadowOpacity: 0,
-		},
-		headerTintColor: '#fff',
-	});
+export default class ThongBao extends React.Component {
+	// static navigationOptions = ({ navigation }) => ({
+	// 	headerLeft: (
+	// 		<Icon
+	// 			name={
+	// 				Platform.OS === 'ios'
+	// 					? `ios-menu${focused ? '' : '-outline'}`
+	// 					: 'md-menu'
+	// 			}
+	// 			style={{ paddingLeft: 20, color: '#fff' }}
+	// 			onPress={() => navigation.navigate('DrawerOpen')}
+	// 		/>
+	// 	),
+	// 	title: 'THÔNG BÁO',
+	// 	headerRight: (
+	// 		<Icon
+	// 			onPress={() => navigation.navigate({ routeName: 'HoiDap' })}
+	// 			name={
+	// 				Platform.OS === 'ios'
+	// 					? `ios-chatbubbles${focused ? '' : '-outline'}`
+	// 					: 'md-chatbubbles'
+	// 			}
+	// 			style={{ paddingRight: 20, color: '#fff' }}
+	// 		/>
+	// 	),
+	// 	headerTitleStyle: {
+	// 		textAlign: 'center',
+	// 		flex: 1,
+	// 		fontWeight: 'bold',
+	// 		// fontStyle: 'italic',
+	// 	},
+	// 	headerStyle: {
+	// 		backgroundColor: '#0099ff',
+	// 		elevation: 0,
+	// 		shadowOpacity: 0,
+	// 	},
+	// 	headerTintColor: '#fff',
+	// });
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -91,22 +91,7 @@ export default class Icons extends React.Component {
 		const { navigate } = this.props.navigation;
 
 		return (
-			<Container style={{ backgroundColor: 'white' }}>
-				{/* <Header  style={{ backgroundColor: "#0099ff",marginTop: Platform.OS === 'android' ? 24 : null }}>
-  <Left>
-    <Button transparent onPress={() => this.props.navigation.navigate("DrawerOpen")}    >
-    <Icon style= {{color:"white"}} name={ Platform.OS === 'ios' ? `ios-menu${focused ? '' : '-outline'}` : 'md-menu'} />
-    </Button>
-  </Left>
-  <Body>
-    <Title style= {{color:"white"}}>Thông Báo</Title>
-  </Body>
-  <Right>
-    <Button transparent onPress={() => this.props.navigation.navigate("HoiDap")} >
-      <Icon style= {{color:"white"}} name={ Platform.OS === 'ios' ? `ios-chatbubbles${focused ? '' : '-outline'}` : 'md-chatbubbles'} />
-    </Button>
-  </Right>
-</Header> */}
+			<Container style={{ backgroundColor: 'white' }}>				
 				<Container style={{ backgroundColor: 'white' }}>
 					<FlatList
 						data={this.state.mang}

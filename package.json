@@ -1,13 +1,14 @@
 {
-  "name": "VHU News",
+  "name": "vhu_news",
   "version": "1.0.0",
   "description": "Demo app for React Native Elements UI Library",
-  "author": "Monte Thakkar",
+  "author": "Trần Phát",
   "private": true,
   "main": "main.js",
   "dependencies": {
     "@expo/vector-icons": "6.3.0",
     "expo": "26.0.0",
+    "firebase": "^5.0.4",
     "lodash": "^4.17.4",
     "native-base": "^2.4.5",
     "react": "16.3.0-alpha.1",
@@ -21,5 +22,10 @@
   "scripts": {
     "postinstall": "git submodule update",
     "clean-install": "rm -rf node_modules && npm cache clean --force && watchman watch-del-all && npm install"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.2.3",
+    "eslint": "^4.19.1",
+    "eslint-plugin-react": "^7.8.2"
   }
 }

@@ -3,22 +3,22 @@ import React from 'react';
 import { StackNavigator } from 'react-navigation';
 import { Icon } from 'react-native-elements';
 
-import ThongBao from '../views/thong_bao';
+import VhuNewsTab from '../tabs/VhuNews';
 
-const ThongBaoDrawerItem = StackNavigator(
+const TinTucDrawerItem = StackNavigator(
 	{
-		Playground: { screen: ThongBao },
+		Playground: { screen: VhuNewsTab },
 	},
 	{
 		headerMode: 'none',
 	}
 );
 
-ThongBaoDrawerItem.navigationOptions = {
-	drawerLabel: 'ThongBao',
+TinTucDrawerItem.navigationOptions = {
+	drawerLabel: 'Tin Tức',
 	drawerIcon: ({ tintColor }) => (
 		<Icon
-			name="list"
+			name="description"
 			size={30}
 			iconStyle={{
 				width: 30,
@@ -30,4 +30,4 @@ ThongBaoDrawerItem.navigationOptions = {
 	),
 };
 
-export default ListsDrawerItem;
+export default TinTucDrawerItem;

@@ -1,24 +1,22 @@
-import Expo from 'expo';
 import React from 'react';
 import { StackNavigator } from 'react-navigation';
 import { Icon } from 'react-native-elements';
+import Thoat from '../views/thoat';
 
-import ThongBao from '../views/thong_bao';
-
-const ThongBaoDrawerItem = StackNavigator(
+const ThoatDrawerItem = StackNavigator(
 	{
-		Playground: { screen: ThongBao },
+		Playground: { screen: Thoat },
 	},
 	{
 		headerMode: 'none',
 	}
 );
 
-ThongBaoDrawerItem.navigationOptions = {
-	drawerLabel: 'ThongBao',
+ThoatDrawerItem.navigationOptions = {
+	drawerLabel: 'Thoat',
 	drawerIcon: ({ tintColor }) => (
 		<Icon
-			name="list"
+			name="exit-to-app"
 			size={30}
 			iconStyle={{
 				width: 30,
@@ -30,4 +28,4 @@ ThongBaoDrawerItem.navigationOptions = {
 	),
 };
 
-export default ListsDrawerItem;
+export default ThoatDrawerItem;

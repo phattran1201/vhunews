@@ -1,24 +1,23 @@
-import Expo from 'expo';
 import React from 'react';
 import { StackNavigator } from 'react-navigation';
 import { Icon } from 'react-native-elements';
 
-import ThongBao from '../views/thong_bao';
+import HoatDongTab from '../tabs/HoatDong';
 
-const ThongBaoDrawerItem = StackNavigator(
+const HoatDongDrawerItem = StackNavigator(
 	{
-		Playground: { screen: ThongBao },
+		Playground: { screen: HoatDongTab },
 	},
 	{
 		headerMode: 'none',
 	}
 );
 
-ThongBaoDrawerItem.navigationOptions = {
-	drawerLabel: 'ThongBao',
+HoatDongDrawerItem.navigationOptions = {
+	drawerLabel: 'Hoạt Động',
 	drawerIcon: ({ tintColor }) => (
 		<Icon
-			name="list"
+			name="supervisor-account"
 			size={30}
 			iconStyle={{
 				width: 30,
@@ -30,4 +29,4 @@ ThongBaoDrawerItem.navigationOptions = {
 	),
 };
 
-export default ListsDrawerItem;
+export default HoatDongDrawerItem;

@@ -3,22 +3,8 @@ import React, { Component } from 'react';
 import { Linking, Platform, Text, WebView, focused } from 'react-native';
 
 export default class GetLink extends Component {
-	// static navigationOptions = {
 
-	//     headerRight: (
-	//       <Icon
-	//         onPress={() => alert('Đã lưu vào yêu thích !')}
-
-	//       />
-	//     ),
-
-	//     headerMode: 'screen'
-	//   };
-	static navigationOptions = ({ navigation }) => ({
-		// headerLeft: <Icon
-		//     name={Platform.OS === 'ios' ? `ios-menu${focused ? '' : '-outline'}` : 'md-menu'}
-		//     style={{ paddingLeft: 20, color:'#fff'}}
-		//     onPress={() => navigation.navigate("DrawerOpen")}  />,
+	static navigationOptions = ({ navigation }) => ({		
 		title: (
 			<Text style={{ fontSize: 15 }}>{navigation.state.params.tieude}</Text>
 		),
