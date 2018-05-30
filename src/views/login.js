@@ -28,7 +28,7 @@ TabSelector.propTypes = {
 	selected: PropTypes.bool.isRequired,
 };
 
-export default class LoginScreen extends Component {
+export default class LoginScreen extends React.Component {
 	static navigationOptions = {
 		drawerLabel: () => null,
 	};
@@ -61,12 +61,12 @@ export default class LoginScreen extends Component {
 		});
 		this.setState({ fontLoaded: true });
 		this.unsubscriber = firebaseApp.auth().onAuthStateChanged(changedUser => {
-			console.log(`changed User : ${JSON.stringify(changedUser.toJSON())}`);
+			// console.log(`changed User : ${JSON.stringify(changedUser.toJSON())}`);
 			this.setState({ user: changedUser });
 			if (changedUser != null) {			
 				this.props.navigation.navigate('VhuNewsTab');
 			}else{
-				console.log('dsadsadas');
+				console.log('Dang nhập thất bại');
 			}
 		});
 	}

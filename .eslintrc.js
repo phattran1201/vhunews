@@ -32,5 +32,6 @@ module.exports = {
 		'no-console': 'off',
 		'react/prop-types': ['error', { ignore: ['navigation', 'focused'] }],
 		'react/display-name': [0, { ignoreTranspilerName: true }],
+		"react/no-deprecated)":[0, { ignore: ['componentWillMount'] }],
 	},
 };

@@ -1,5 +1,7 @@
 import { Icon } from 'native-base';
 import React from 'react';
+import { LinearGradient } from 'expo';
+
 import { Platform, focused } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import ThongBao from '../views/thong_bao';
@@ -36,14 +38,23 @@ const ThongBaoTab = StackNavigator({
 				textAlign: 'center',
 				flex: 1,
 				fontWeight: 'bold',
-				// fontStyle: 'italic',
+				color: 'white'
 			},
 			headerStyle: {
 				backgroundColor: '#0099ff',
 				elevation: 0,
 				shadowOpacity: 0,
 			},
-			headerTintColor: '#fff',
+			headerBackground: (
+				<LinearGradient
+					colors={['#001eb3', '#001166']}
+					start= {[1, 0]}
+					// end= {[0.2, 0]}
+					style={{						
+						height: '100%'
+					}}
+				/>
+			),
 		}),
 	},
 });

@@ -8,7 +8,7 @@ import Pricing from './src/drawer/pricing';
 import Profile from './src/drawer/profile';
 import Ratings from './src/drawer/ratings';
 // import Lists from './src/drawer/lists';
-import Settings from './src/drawer/settings';
+import CaiDatTab from './src/drawer/caidat';
 import Home from './src/views/Home';
 import Thoat from './src/drawer/thoat';
 import Login from './src/views/login';
@@ -16,13 +16,15 @@ import VhuNewsTab from './src/drawer/tintuc';
 import SuKienTab from './src/drawer/sukien';
 import HoatDongTab from './src/views/hoat_dong';
 import ThongBaoTab from './src/drawer/thongbao';
-
+import { YellowBox } from 'react-native';
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
+YellowBox.ignoreWarnings(['Warning: setState(...): Can only update a mounted or mounting component.']);
+
 const CustomDrawerContentComponent = props => (
-	<LinearGradient colors={['#001eb3', '#001166']} start= {[1, 0]} style={{ flex: 1 }}>
+	<LinearGradient colors={['#001166', '#001eb3']} style={{ flex: 1 }}>
 		<View
-			style={{ paddingTop: 40, justifyContent: 'center', alignItems: 'center', }}
+			style={{ paddingTop: 50, justifyContent: 'center', alignItems: 'center', }}
 		>
 			
 			<View style={styles.titleContainer}>
@@ -69,11 +71,11 @@ const MainRoot = DrawerNavigator(
     
 		},	
 		Profile: {
-			path: '/profile',
+			// path: '/profile',
 			screen: Profile,
 		},
 		Hoidap: {
-			path: '/hoidap',
+			// path: '/hoidap',
 			screen: HoiDap,
 		},
 		// Ratings: {
@@ -85,8 +87,8 @@ const MainRoot = DrawerNavigator(
 		// 	screen: Pricing,
 		// },
 		Settings: {
-			path: '/settings',
-			screen: Settings,
+			// path: '/settings',
+			screen: CaiDatTab,
 		},
 		Thoat: {
 			path: '/thoat',
@@ -98,7 +100,7 @@ const MainRoot = DrawerNavigator(
 		// },
 	},
 	{
-		initialRouteName: 'VhuNewsTab',
+		initialRouteName: 'Login',
 		contentOptions: {
 			activeTintColor: '#0099ff',
 			activeBackgroundColor: 'transparent',
@@ -138,10 +140,10 @@ export default class AppContainer extends React.Component {
 
 	async _loadAssetsAsync() {
 		const imageAssets = cacheImages([
-			require('./assets/images/bg_screen1.jpg'),
-			require('./assets/images/bg_screen2.jpg'),
-			require('./assets/images/bg_screen3.jpg'),
-			require('./assets/images/bg_screen4.jpg'),
+			// require('./assets/images/bg_screen1.jpg'),
+			// require('./assets/images/bg_screen2.jpg'),
+			// require('./assets/images/bg_screen3.jpg'),
+			// require('./assets/images/bg_screen4.jpg'),
 			require('./assets/images/user-cool.png'),
 			require('./assets/images/user-hp.png'),
 			require('./assets/images/user-student.png'),

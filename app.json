@@ -1,13 +1,13 @@
 {
   "expo": {
     "name": "Bản Tin VHU",
-    "description": "A demo app for React Native Elements UI Library",
+    "description": "Xây dựng và thiết kế bởi Đâu Phải Phát",
     "slug": "VHUNEWS",
     "privacy": "public",
     "sdkVersion": "26.0.0",
     "version": "1.0.0",
     "orientation": "portrait",
-    "primaryColor": "#cccccc",
+    "primaryColor": "#001eb3",
     "icon": "./assets/icons/icon.png",
     "splash": {
       "image": "./assets/icons/loading.png"

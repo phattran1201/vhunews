@@ -2,10 +2,16 @@ import React from 'react';
 import { StackNavigator } from 'react-navigation';
 import { Icon } from 'react-native-elements';
 import Thoat from '../views/thoat';
+import Login from '../views/login';
+
+const ThoatView = ({ navigation }) => <Thoat navigation={navigation} />;
+const LoginView = ({ navigation }) => <Login navigation={navigation} />;
 
 const ThoatDrawerItem = StackNavigator(
 	{
-		Playground: { screen: Thoat },
+		Playground: { screen: ThoatView },
+		Login: { screen: LoginView },
+
 	},
 	{
 		headerMode: 'none',
@@ -13,7 +19,7 @@ const ThoatDrawerItem = StackNavigator(
 );
 
 ThoatDrawerItem.navigationOptions = {
-	drawerLabel: 'Thoat',
+	drawerLabel: 'Thoát',
 	drawerIcon: ({ tintColor }) => (
 		<Icon
 			name="exit-to-app"

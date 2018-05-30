@@ -2,12 +2,12 @@ import { Icon } from 'native-base';
 import React from 'react';
 import { Platform, focused } from 'react-native';
 import { StackNavigator } from 'react-navigation';
-import HoatDong from '../views/hoat_dong';
+import CaiDat from '../views/cai_dat';
 import { LinearGradient } from 'expo';
 
-const HoatDongTab = StackNavigator({
-	HoatDong: {
-		screen: HoatDong,	
+const CaiDatTab = StackNavigator({
+	CaiDat: {
+		screen: CaiDat,	
 		navigationOptions: ({ navigation }) => ({
 			headerLeft: (
 				<Icon
@@ -20,14 +20,14 @@ const HoatDongTab = StackNavigator({
 					onPress={() => navigation.navigate('DrawerOpen')}
 				/>
 			),
-			title: 'HOẠT ĐỘNG',
+			title: 'CÀI ĐẶT',
 			headerRight: (
 				<Icon
-					onPress={() => navigation.navigate({ routeName: 'TB' })}
+					onPress={() => navigation.navigate({ routeName: 'HoiDap' })}
 					name={
 						Platform.OS === 'ios'
-							? `ios-notifications${focused ? '' : '-outline'}`
-							: 'md-notifications'
+							? `ios-chatbubbles${focused ? '' : '-outline'}`
+							: 'md-chatbubbles'
 					}
 					style={{ paddingRight: 20, color: '#fff' }}
 				/>
@@ -59,4 +59,4 @@ const HoatDongTab = StackNavigator({
 	},
 });
 
-export default HoatDongTab;
+export default CaiDatTab;

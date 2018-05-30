@@ -1,13 +1,14 @@
 import { Icon } from 'native-base';
 import React from 'react';
-import { Platform, focused } from 'react-native';
+import { Platform, focused,Linking } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import SuKien from '../views/su_kien';
-
+import { LinearGradient } from 'expo';
+import GetSK from '../views/GetSK';
 const SuKienTab = StackNavigator({
-	Home: {
+	SuKien: {
 		screen: SuKien,
-		path: '/',
+		
 		navigationOptions: ({ navigation }) => ({
 			headerLeft: (
 				<Icon
@@ -23,7 +24,7 @@ const SuKienTab = StackNavigator({
 			title: 'SỰ KIỆN',
 			headerRight: (
 				<Icon
-					onPress={() => navigation.navigate({ routeName: 'TB' })}
+					onPress={() => navigation.navigate({ routeName: 'ThongBaoTab' })}
 					name={
 						Platform.OS === 'ios'
 							? `ios-notifications${focused ? '' : '-outline'}`
@@ -37,13 +38,77 @@ const SuKienTab = StackNavigator({
 				flex: 1,
 				fontWeight: 'bold',
 				fontStyle: 'italic',
+				color: 'white'
+
 			},
 			headerStyle: {
 				backgroundColor: '#0099ff',
 				elevation: 0,
 				shadowOpacity: 0,
 			},
-			headerTintColor: '#fff',
+			headerBackground: (
+				<LinearGradient
+					colors={['#001eb3', '#001166']}
+					start= {[1, 0]}
+					// end= {[0.2, 0]}
+					style={{						
+						height: '100%'
+					}}
+				/>
+			),
+		}),
+	},
+	GetSK: {
+		screen: GetSK,
+		navigationOptions: ({ navigation }) => ({
+			headerLeft: (
+				<Icon
+					name={
+						Platform.OS === 'ios'
+							? `ios-arrow-back${focused ? '' : '-outline'}`
+							: 'md-arrow-back'
+					}
+					style={{ paddingLeft: 20, color: '#fff' }}
+					onPress={() => navigation.navigate('SuKien')}
+				/>
+			),
+			title: navigation.state.params.TIEUDE,
+			headerRight: (
+				<Icon
+					onPress={() =>
+						Linking.openURL(
+							navigation.state.params.linkdemo + navigation.state.params.link
+						)
+					}
+					name={
+						Platform.OS === 'ios'
+							? `ios-share${focused ? '' : '-outline'}`
+							: 'md-share'
+					}
+					style={{ paddingRight: 20, color: '#fff' }}
+				/>
+			),
+			headerTitleStyle: {
+				textAlign: 'center',
+			
+				color: 'white'
+
+			},
+			headerStyle: {
+				backgroundColor: '#0099ff',
+				elevation: 0,
+				shadowOpacity: 0,
+			},
+			headerBackground: (
+				<LinearGradient
+					colors={['#001eb3', '#001166']}
+					start= {[1, 0]}
+					// end= {[0.2, 0]}
+					style={{						
+						height: '100%'
+					}}
+				/>
+			),
 		}),
 	},
 });

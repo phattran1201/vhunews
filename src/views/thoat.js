@@ -1,20 +1,62 @@
 import React from 'react';
-import { StyleSheet, Text, View, Platform, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, Platform, ScrollView,Alert } from 'react-native';
 
 import { Rating,  } from 'react-native-ratings';
 import { Button,  } from 'react-native-elements';
 import { firebaseApp } from './firebaseConfig';
+import { BackHandler } from 'react-native';
 
 const WATER_IMAGE = require('../images/water.png');
 
 class Thoat extends React.Component {
+	constructor(props) {
+		super(props);
+		this.handleBackButtonClick = this.handleBackButtonClick.bind(this);
+	}
 	ratingCompleted(rating) {
 		console.log('Rating is: ' + rating);
 	}
-	thoat() {
-		firebaseApp.auth().signOut();
-		this.props.navigation.navigate('Login');
+
+	componentWillMount() {
+		BackHandler.addEventListener('hardwareBackPress', this.handleBackButtonClick);
 	}
+	
+	componentWillUnmount() {
+		BackHandler.removeEventListener('hardwareBackPress', this.handleBackButtonClick);
+	}
+	
+	handleBackButtonClick() {
+		
+		firebaseApp.auth().signOut();
+		console.log('Đã Thoát');
+		this.props.navigation.navigate('Login');
+		return true;
+	}
+
+	// thoat = () =>{
+	// 	firebaseApp.auth().signOut();
+
+	// 	console.log('Đã Thoát');
+	// 	Alert.alert(
+	// 		'Cảnh báo',
+	// 		'Bạn muốn đăng xuất',
+	// 		[
+	// 			// {
+	// 			// 	text: 'Ask me later',
+	// 			// 	onPress: () => Actions.pop(),
+	// 			// },
+	// 			{ text: 'Đồng ý', onPress: () => BackHandler.exitApp()},
+	// 			{
+	// 				text: 'Hủy',
+	// 				// onPress: () =>  this.props.navigation.goBack(),
+	// 				style: 'cancel',
+	// 			},
+	// 		],
+	// 		{ cancelable: false }
+	// 	);
+	// 	return true;
+	// }
+	
 	render() {
 		return (
 			<View style={styles.container}>
@@ -116,10 +158,10 @@ class Thoat extends React.Component {
 								end: [0.2, 0],
 							}}
 							buttonStyle={styles.loginButton}
-							containerStyle={{ marginTop: 5, flex: 0,alignItems: 'center',justifyContent: 'center', }}
+							containerStyle={{ marginTop: 5,alignItems: 'center',justifyContent: 'center',textAlign:'center'}}
 							activeOpacity={0.8}
 							title= 'THOÁT'
-							onPress={this.thoat}
+							onPress={this.handleBackButtonClick}
 							titleStyle={styles.loginTextButton}
 									
 						/>
@@ -172,7 +214,7 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'center',
 		borderRadius: 10,
-		height: 25,
+		height: 30,
 		width: 100,
 	},
 });
