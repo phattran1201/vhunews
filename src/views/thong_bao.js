@@ -119,7 +119,7 @@ export default class ThongBao extends React.Component {
 									}}
 								>
 									<View style={{ flex: 1, paddingLeft: 15 }}>
-										<Text style={{ fontSize: 50, color: '#001eb3' }}>
+										<Text style={{ fontSize: 50, color: '#0099ff' }}>
 											{item.NGAY}
 										</Text>
 										<Text
@@ -127,7 +127,7 @@ export default class ThongBao extends React.Component {
 												fontWeight: '400',
 												fontSize: 17,
 												lineHeight: 17,
-												color: '#001eb3',
+												color: '#0099ff',
 											}}
 										>
 											{item.THANG}

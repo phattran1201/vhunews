@@ -250,7 +250,7 @@ export default class LoginScreen2 extends Component {
                     />}
                     <Button
                     linearGradientProps={{
-                colors: ['#001eb3', '#001166'],
+                colors: ['#0099ff', '#14a6f9'],
                 start: [1, 0],
                 end: [0.2, 0],
               }}

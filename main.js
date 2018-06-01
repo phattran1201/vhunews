@@ -1,45 +1,49 @@
 import { FontAwesome, Ionicons } from '@expo/vector-icons';
-import Expo, { AppLoading, Asset, Font,LinearGradient } from 'expo';
+import Expo, { AppLoading, Asset, Font, LinearGradient } from 'expo';
 import React from 'react';
-import { Dimensions, Image, View,StyleSheet,Text } from 'react-native';
+import { Dimensions, Image, StyleSheet, Text, View, YellowBox } from 'react-native';
 import { DrawerItems, DrawerNavigator } from 'react-navigation';
-import HoiDap from './src/drawer/hoidap';
-import Pricing from './src/drawer/pricing';
-import Profile from './src/drawer/profile';
-import Ratings from './src/drawer/ratings';
 // import Lists from './src/drawer/lists';
 import CaiDatTab from './src/drawer/caidat';
-import Home from './src/views/Home';
-import Thoat from './src/drawer/thoat';
-import Login from './src/views/login';
-import VhuNewsTab from './src/drawer/tintuc';
+import HoatDongDrawerItem from './src/drawer/hoidap';
+import Profile from './src/drawer/profile';
 import SuKienTab from './src/drawer/sukien';
-import HoatDongTab from './src/views/hoat_dong';
+import Thoat from './src/drawer/thoat';
 import ThongBaoTab from './src/drawer/thongbao';
-import { YellowBox } from 'react-native';
+import VhuNewsTab from './src/drawer/tintuc';
+import Login from './src/views/login';
 const SCREEN_WIDTH = Dimensions.get('window').width;
+// import { Permissions, Notifications } from 'expo';
 
-YellowBox.ignoreWarnings(['Warning: setState(...): Can only update a mounted or mounting component.']);
+YellowBox.ignoreWarnings([
+	'Warning: setState(...): Can only update a mounted or mounting component.',
+]);
 
 const CustomDrawerContentComponent = props => (
-	<LinearGradient colors={['#001166', '#001eb3']} style={{ flex: 1 }}>
+	<LinearGradient colors={['#fff', '#fff']} style={{ flex: 1 }}>
 		<View
-			style={{ paddingTop: 50, justifyContent: 'center', alignItems: 'center', }}
+			style={{
+				justifyContent: 'center',
+				alignItems: 'center',
+				backgroundColor: '#0099ff',
+			}}
 		>
-			
-			<View style={styles.titleContainer}>
-				<View style={{ flexDirection: 'row' }}>
-					<Text style={styles.titleText}>CỔNG THÔNG TIN</Text>
-				</View>
-				<View style={{ marginLeft: 40 }}>
-					<Text style={styles.titleText}>ĐẠI HỌC VĂN HIẾN</Text>
-				</View>				
-			</View>
-			{/* <Image				
+			<Image
 				source={require('./assets/icons/icon.png')}
 				style={{ width: SCREEN_WIDTH * 0.2 }}
 				resizeMode="contain"
-			/> */}
+			/>
+			<Text style={styles.titleText}>
+				Phát triển bởi Trần Phát & Tuấn Trương
+			</Text>
+			{/* <View style={styles.titleContainer}>
+				<View style={{ flexDirection: 'row' }}>
+					<Text style={styles.titleText}>VHU</Text>
+				</View>
+				<View style={{ marginLeft: 40 }}>
+					<Text style={styles.titleText}>NEWS</Text>
+				</View>				
+			</View> */}
 		</View>
 		<View style={{ marginLeft: 10 }}>
 			<DrawerItems {...props} />
@@ -59,24 +63,21 @@ const MainRoot = DrawerNavigator(
 		// },
 		VhuNewsTab: {
 			screen: VhuNewsTab,
-     
 		},
 		ThongBaoTab: {
 			screen: ThongBaoTab,
-     
 		},
-	
+
 		SuKienTab: {
-			screen: SuKienTab,     
-    
-		},	
+			screen: SuKienTab,
+		},
 		Profile: {
 			// path: '/profile',
 			screen: Profile,
 		},
 		Hoidap: {
 			// path: '/hoidap',
-			screen: HoiDap,
+			screen: HoatDongDrawerItem,
 		},
 		// Ratings: {
 		// 	path: '/ratings',
@@ -95,16 +96,16 @@ const MainRoot = DrawerNavigator(
 			screen: Thoat,
 		},
 		// Home: {
-			
+
 		// 	screen: Home,
 		// },
 	},
 	{
 		initialRouteName: 'Login',
 		contentOptions: {
-			activeTintColor: '#0099ff',
+			activeTintColor: '#008ae6',
 			activeBackgroundColor: 'transparent',
-			inactiveTintColor: '#fff',
+			inactiveTintColor: '#0099ff',
 			inactiveBackgroundColor: 'transparent',
 			labelStyle: {
 				fontSize: 15,
@@ -180,6 +181,8 @@ const styles = StyleSheet.create({
 	titleText: {
 		color: 'white',
 		fontSize: 18,
-	// fontFamily: 'regular',
+		paddingTop: -30,
+		paddingBottom: 10,
+		// fontFamily: 'regular',
 	},
 });

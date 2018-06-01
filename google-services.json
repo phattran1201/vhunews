@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "767239089940",
+    "firebase_url": "https://portalvhu.firebaseio.com",
+    "project_id": "portalvhu",
+    "storage_bucket": "portalvhu.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:767239089940:android:a7e7acdc9905657d",
+        "android_client_info": {
+          "package_name": "com.vanhien.vhunews"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "767239089940-3sdvtht04dhpnmpgmb600mgh330ohjsc.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "767239089940-3sdvtht04dhpnmpgmb600mgh330ohjsc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAUNTOM_-djlM3mkTJ1D7QDo2wpccu6Ip4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

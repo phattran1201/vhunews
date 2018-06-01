@@ -65,7 +65,7 @@ class Thoat extends React.Component {
 					{/* <Text style={styles.subtitleText}>cảm ơn các bạn!</Text>
 					<Button
 						linearGradientProps={{
-							colors: ['#001eb3', '#001166'],
+							colors: ['#0099ff', '#14a6f9'],
 							start: [1, 0],
 							end: [0.2, 0],
 						}}
@@ -153,12 +153,12 @@ class Thoat extends React.Component {
 						<Text style={styles.subtitleText}>CẢM ƠN CÁC BẠN ĐÃ ĐÁNH GIÁ!</Text>
 						<Button
 							linearGradientProps={{
-								colors: ['#001eb3', '#001166'],
+								colors: ['#0099ff', '#14a6f9'],
 								start: [1, 0],
 								end: [0.2, 0],
 							}}
 							buttonStyle={styles.loginButton}
-							containerStyle={{ marginTop: 5,alignItems: 'center',justifyContent: 'center',textAlign:'center'}}
+							containerStyle={{ alignItems: 'center',justifyContent: 'center',}}
 							activeOpacity={0.8}
 							title= 'THOÁT'
 							onPress={this.handleBackButtonClick}
@@ -184,10 +184,10 @@ const styles = StyleSheet.create({
 		backgroundColor: 'white',
 	},
 	headingContainer: {
-		paddingTop: 50,
+		paddingTop: 20,
 	},
 	titleText: {
-		fontSize: 25,
+		fontSize: 18,
 		fontWeight: 'bold',
 		textAlign: 'center',
 		paddingVertical: 5,
@@ -195,7 +195,7 @@ const styles = StyleSheet.create({
 		color: '#27ae60',
 	},
 	subtitleText: {
-		fontSize: 18,
+		fontSize: 14,
 		fontWeight: '400',
 		textAlign: 'center',
 		fontFamily: Platform.OS === 'ios' ? 'Trebuchet MS' : null,
@@ -208,6 +208,7 @@ const styles = StyleSheet.create({
 		fontSize: 16,
 		color: 'white',
 		fontWeight: 'bold',
+		textAlign:'center'
 	},
 	loginButton: {
 		// backgroundColor: 'rgba(232, 147, 142, 1)',

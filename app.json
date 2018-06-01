@@ -5,12 +5,20 @@
     "slug": "VHUNEWS",
     "privacy": "public",
     "sdkVersion": "26.0.0",
-    "version": "1.0.0",
+    "version": "3.0.0",
     "orientation": "portrait",
-    "primaryColor": "#001eb3",
+    "primaryColor": "#0099ff",
     "icon": "./assets/icons/icon.png",
     "splash": {
       "image": "./assets/icons/loading.png"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.vanhien.vhunews"
+    },
+    "android": {
+      "googleServicesFile": "./google-services.json",
+      "package": "com.vanhien.vhunews"
     },
     "packagerOpts": {
       "assetExts": [
@@ -19,8 +27,6 @@
       ],
       "config": "rn-cli.config.js"
     },
-    "ios": {
-      "supportsTablet": true
-    }
+   
   }
 }

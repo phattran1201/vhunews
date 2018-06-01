@@ -63,7 +63,7 @@ export default class CaiDat extends React.Component {
 
 					<List>
 						<ListItem itemDivider>
-							<Text style={{ color: '#001eb3' }}>Thông Báo</Text>
+							<Text style={{ color: '#0099ff' }}>Thông Báo</Text>
 						</ListItem>
 						<ListItem icon>
 							<Left>
@@ -100,7 +100,7 @@ export default class CaiDat extends React.Component {
 							</Right>
 						</ListItem>
 						<ListItem itemDivider>
-							<Text style={{ color: '#001eb3' }}>Liên hệ</Text>
+							<Text style={{ color: '#0099ff' }}>Liên hệ</Text>
 						</ListItem>
 						<ListItem icon>
 							<Left>
@@ -114,17 +114,17 @@ export default class CaiDat extends React.Component {
 							</Left>
 							<Body>
 								<Text
-									onPress={() => {
-										navigate('GetLink', {
-											link: 'http://m.me/118380728849917',
-											tieude: 'Liên Hệ ITC',								
-										});
-									}}
-									// onPress={() =>
-									// 	Linking.openURL(
-									// 		'https://www.messenger.com/t/118380728849917'
-									// 	)
-									// }
+									// onPress={() => {
+									// 	navigate('GetLink', {
+									// 		link: 'http://m.me/118380728849917',
+									// 		tieude: 'Liên Hệ ITC',								
+									// 	});
+									// }}
+									onPress={() =>
+										Linking.openURL(
+											'https://www.messenger.com/t/118380728849917'
+										)
+									}
 								>
 									Câu lạc bộ ITC
 								</Text>
@@ -142,12 +142,17 @@ export default class CaiDat extends React.Component {
 							</Left>
 							<Body>
 								<Text
-									onPress={() => {
-										navigate('GetLink', {
-											link: 'http://m.me/thanh.phat.97',
-											tieude: 'Liên Hệ tác giả',								
-										});
-									}}
+									// onPress={() => {
+									// 	navigate('GetLink', {
+									// 		link: 'http://m.me/thanh.phat.97',
+									// 		tieude: 'Liên Hệ tác giả',								
+									// 	});
+									// }}
+									onPress={() =>
+										Linking.openURL(
+											'https://www.messenger.com/t/thanh.phat.97'
+										)
+									}
 								
 								>
 									Người phát triển
@@ -155,7 +160,7 @@ export default class CaiDat extends React.Component {
 							</Body>
 						</ListItem>
 						<ListItem itemDivider>
-							<Text style={{ color: '#001eb3' }}>Tổng Quan</Text>
+							<Text style={{ color: '#0099ff' }}>Tổng Quan</Text>
 						</ListItem>
 						<ListItem icon>
 							<Left>

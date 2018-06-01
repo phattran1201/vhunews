@@ -80,10 +80,17 @@ export default class VhuNews extends React.Component {
 					])}
 				>
 					<FlatList
+						style={{
+							backgroundColor: '#fff',
+							borderBottomWidth: 0.2,
+							borderBottomColor: '#E0E0E0',
+							padding: 5,
+						}}
 						data={this.state.mang}
 						renderItem={({ item }) => (
 							<TouchableOpacity
 								style={{
+									backgroundColor: '#fff',
 									borderBottomWidth: 0.2,
 									borderBottomColor: '#E0E0E0',
 									padding: 5,
@@ -152,17 +159,7 @@ export default class VhuNews extends React.Component {
 										/>
 									</View>
 								</View>
-								<View  style={{shadowOffset: {
-									width: 0,
-									height: 2
-								},
-								borderBottomWidth:1,
-									// borderTopWidth:1,
-									// elevation:5,
-								shadowRadius:3,
-								shadowOpacity: 1.0,
-									// borderTopColor: '#696969',
-								borderBottomColor: '#ccc'}}></View>
+								<View  style={{paddingBottom:5}}></View>
 							</TouchableOpacity>
 						)}
 						refreshing={this.state.refreshing}
@@ -176,8 +173,7 @@ export default class VhuNews extends React.Component {
 						{ height: headerHeight, backgroundColor: headerBackgroundColor },
 					]}
 				>
-					<TinNoiBat  	sa				
-					/>
+					<TinNoiBat/>
 				</Animated.View>
 			</View>
 		);

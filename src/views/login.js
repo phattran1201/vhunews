@@ -1,7 +1,7 @@
 import { Font } from 'expo';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { Dimensions, ImageBackground, KeyboardAvoidingView, LayoutAnimation, StyleSheet, Text, UIManager, View } from 'react-native';
+import { Dimensions, ImageBackground, KeyboardAvoidingView, LayoutAnimation, StyleSheet, Text, UIManager, View,Linking,Alert } from 'react-native';
 import { Button, Input } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import SimpleIcon from 'react-native-vector-icons/SimpleLineIcons';
@@ -64,9 +64,15 @@ export default class LoginScreen extends React.Component {
 			// console.log(`changed User : ${JSON.stringify(changedUser.toJSON())}`);
 			this.setState({ user: changedUser });
 			if (changedUser != null) {			
-				this.props.navigation.navigate('VhuNewsTab');
+				setTimeout(() => {
+					this.props.navigation.navigate('VhuNewsTab'),
+					LayoutAnimation.easeInEaseOut(),
+					this.setState({
+						isLoading: false,
+					});
+				}, 1500);
 			}else{
-				console.log('Dang nhập thất bại');
+				console.log('Đăng nhập thất bại');
 			}
 		});
 	}
@@ -99,7 +105,7 @@ export default class LoginScreen extends React.Component {
 			.signInWithEmailAndPassword(this.state.email, this.state.password)
 			.then(() => {
 				setTimeout(() => {
-					this.props.navigation.navigate('Tabs'),
+					this.props.navigation.navigate('VhuNewsTab'),
 					LayoutAnimation.easeInEaseOut(),
 					this.setState({
 						isLoading: false,
@@ -111,16 +117,33 @@ export default class LoginScreen extends React.Component {
 				}, 1500);
 			})
 			.catch(() => {
+
 				setTimeout(() => {
 					LayoutAnimation.easeInEaseOut(),
 					this.setState({
 						isLoading: false,
-						isEmailValid:
-								this.validateEmail(email) || this.emailInput.shake(),
-						isPasswordValid:
-								password.length >= 6 || this.passwordInput.shake(),
+						isEmailValid: this.validateEmail(email) || this.emailInput.shake(),
+						isPasswordValid: password.length >= 6 || this.passwordInput.shake(),
 					});
 				}, 1500);
+				Alert.alert(
+					'Cảnh báo',
+					'Email hoặc tài khoản không đúng',
+					[
+						// {
+						// 	text: 'Đã đăng ký',
+						// 	onPress: () => Actions.pop(),
+						// },
+						{ text: 'Đăng ký', onPress: () => this.selectCategory(1) },
+						{
+							text: 'OK',
+							// onPress: () => Actions.pop(),
+							style: 'cancel',
+						},
+						
+					],
+					{ cancelable: false }
+				);
 			});
 	}
 
@@ -128,42 +151,73 @@ export default class LoginScreen extends React.Component {
 		const { email, password, passwordConfirmation } = this.state;
 		this.setState({ isLoading: true });
 		// Simulate an API call
-		firebaseApp
-			.auth()
-			.createUserWithEmailAndPassword(this.state.email, this.state.password)
-			.then(() => {
-				this.itemRef.child(firebaseApp.auth().currentUser.uid).set({
-					email: this.state.email,
-					// password: this.state.password,
-				});
-				setTimeout(() => {
+		if (password == passwordConfirmation ) {
+			
+			firebaseApp
+				.auth()
+				.createUserWithEmailAndPassword(this.state.email, this.state.password)
+				.then(() => {
+					// this.itemRef.child(firebaseApp.auth().currentUser.uid).set({
+					// 	email: this.state.email,
+					// // password: this.state.password,
+					// });
 					this.selectCategory(0);
-					LayoutAnimation.easeInEaseOut();
-					this.setState({
-						isLoading: false,
-						isEmailValid: this.validateEmail(email) || this.emailInput.shake(),
-						isPasswordValid: password.length >= 6 || this.passwordInput.shake(),
-						isConfirmationValid:
-							password == passwordConfirmation ||
-							this.confirmationInput.shake(),
-					});
-				}, 1500);
-			})
-			.catch(() => {
-				setTimeout(() => {
-					LayoutAnimation.easeInEaseOut(),
-					this.setState({
-						isLoading: false,
-						isEmailValid:
-								this.validateEmail(email) || this.emailInput.shake(),
-						isPasswordValid:
-								password.length >= 6 || this.passwordInput.shake(),
-						isConfirmationValid:
-								password == passwordConfirmation ||
-								this.confirmationInput.shake(),
-					});
-				}, 1500);
-			});
+					
+				})
+				.catch(()=> {
+					Alert.alert(
+						'Cảnh báo',
+						'Email đã tồn tại',
+						[
+							// {
+							// 	text: 'Đã đăng ký',
+							// 	onPress: () => Actions.pop(),
+							// },
+							// { text: 'OK', onPress: () => Actions.refresh() },
+							{
+								text: 'OK',
+								// onPress: () => Actions.pop(),
+								style: 'cancel',
+							},
+							
+						],
+						{ cancelable: false }
+					);
+				});
+			setTimeout(() => {
+				// this.selectCategory(0);
+				LayoutAnimation.easeInEaseOut();
+				this.setState({
+					isLoading: false,
+					isEmailValid:this.validateEmail(email) || this.emailInput.shake(),
+					isPasswordValid:password.length >= 6 || this.passwordInput.shake(),
+					isConfirmationValid:password == passwordConfirmation || this.confirmationInput.shake(),
+				});
+			}, 1500);
+			
+			// .catch(() => {
+			// 	setTimeout(() => {
+			// 		LayoutAnimation.easeInEaseOut(),
+			// 		this.setState({
+			// 			isLoading: false,
+			// 			isEmailValid: this.validateEmail(email) || this.emailInput.shake(),
+			// 			isPasswordValid: password.length >= 6 || this.passwordInput.shake(),
+			// 			isConfirmationValid: password == passwordConfirmation || this.confirmationInput.shake(),
+			// 		});
+			// 	}, 1500);
+			// });
+		}else{
+			setTimeout(() => {
+				LayoutAnimation.easeInEaseOut();
+				this.setState({
+					isLoading: false,
+					isEmailValid:this.validateEmail(email) || this.emailInput.shake(),
+					isPasswordValid:password.length >= 6 || this.passwordInput.shake(),
+					isConfirmationValid:password == passwordConfirmation || this.confirmationInput.shake(),
+				});
+			}, 1500);
+		}
+		
 	}
 
 	render() {
@@ -196,7 +250,7 @@ export default class LoginScreen extends React.Component {
 									<View style={{ flexDirection: 'row' }}>
 										<Text style={styles.titleText}>ĐẠI HỌC</Text>
 									</View>
-									<View style={{ marginTop: -10, marginLeft: 20 }}>
+									<View style={{  marginLeft: 30 }}>
 										<Text style={styles.titleText}>VĂN HIẾN</Text>
 									</View>
 								</View>
@@ -289,7 +343,7 @@ export default class LoginScreen extends React.Component {
 										}
 										onChangeText={password => this.setState({ password })}
 										errorMessage={
-											isPasswordValid ? null : 'Mật khẩu yêu cầu 8 kí tự'
+											isPasswordValid ? null : 'Mật khẩu yêu cầu 6 kí tự'
 										}
 									/>
 									{isSignUpPage && (
@@ -330,7 +384,7 @@ export default class LoginScreen extends React.Component {
 									)}
 									<Button
 										linearGradientProps={{
-											colors: ['#001eb3', '#001166'],
+											colors: ['#0099ff', '#14a6f9'],
 											start: [1, 0],
 											end: [0.2, 0],
 										}}
@@ -352,7 +406,11 @@ export default class LoginScreen extends React.Component {
 									titleStyle={{ color: 'white' }}
 									buttonStyle={{ backgroundColor: 'transparent' }}
 									underlayColor="transparent"
-									onPress={() => console.log('Account created')}
+									onPress={() =>
+										Linking.openURL(
+											'https://www.messenger.com/t/thanh.phat.97'
+										)
+									}
 								/>
 							</View>
 						</View>
@@ -453,7 +511,7 @@ const styles = StyleSheet.create({
 	titleText: {
 		color: 'white',
 		fontSize: 30,
-		// fontFamily: 'regular',
+		fontWeight: 'bold',
 	},
 	helpContainer: {
 		height: 64,

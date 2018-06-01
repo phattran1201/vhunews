@@ -3,7 +3,7 @@
  */
 
 export default {
-	mauchudao: '#001eb3',
+	mauchudao: '#0099ff',
 	primary: '#397af8',
 	primary1: '#4d86f7',
 	primary2: '#6296f9',

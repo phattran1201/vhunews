@@ -41,7 +41,7 @@ class CustomButton extends Component {
 				}
 				buttonStyle={
 					selected
-						? { backgroundColor: '#001166', borderRadius: 100, width: 127 } 
+						? { backgroundColor: '#14a6f9', borderRadius: 100, width: 127 } 
 						: {
 							borderWidth: 1,
 							borderColor: '#121212',
@@ -85,7 +85,7 @@ export default class LoginScreen1 extends Component {
 					<View style={{ flex: 1, backgroundColor: '#fff', }}>
 						<View style={styles.statusBar} />
 						<View style={styles.navBar}>
-							{/* <Icon name='arrow-back' style={styles.backHeader}></Icon> */}
+							<Icon name='arrow-back' style={styles.backHeader} ></Icon>
 							<Text style={styles.nameHeader}>Trần Phát</Text>
 						</View>
 						<ScrollView style={{ flex: 1 }}>
@@ -116,7 +116,7 @@ export default class LoginScreen1 extends Component {
 									style={{
 										flex: 1,
 										fontSize: 26,
-										color: '#001166',
+										color: '#14a6f9',
 										fontFamily: 'bold',
 									}}
 								>
@@ -129,7 +129,7 @@ export default class LoginScreen1 extends Component {
 									style={{
 										flex: 1,
 										fontSize: 26,
-										color: '#001166',
+										color: '#14a6f9',
 										fontFamily: 'bold',
 										textAlign: 'right',
 									}}
@@ -162,7 +162,7 @@ export default class LoginScreen1 extends Component {
 									style={{
 										flex: 1,
 										fontSize: 15,
-										color: '#001166',
+										color: '#14a6f9',
 										fontFamily: 'regular',
 										marginLeft: 40,
 									}}
@@ -211,7 +211,7 @@ export default class LoginScreen1 extends Component {
 									style={{
 										flex: 1,
 										fontSize: 15,
-										color: '#001166',
+										color: '#14a6f9',
 										fontFamily: 'regular',
 										marginLeft: 40,
 									}}
@@ -277,7 +277,7 @@ export default class LoginScreen1 extends Component {
 									alignItems: 'center',
 								}}
 								linearGradientProps={{
-									colors: ['#001eb3', '#001166'],
+									colors: ['#0099ff', '#14a6f9'],
 									start: [1, 0],
 									// end: [0.2, 0],
 								}}

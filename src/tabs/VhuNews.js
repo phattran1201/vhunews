@@ -53,7 +53,7 @@ const VhuTab = StackNavigator({
 			},
 			headerBackground: (
 				<LinearGradient
-					colors={['#001eb3', '#001166']}
+					colors={['#0099ff', '#14a6f9']}
 					start= {[1, 0]}
 					// end= {[0.2, 0]}
 					style={{						

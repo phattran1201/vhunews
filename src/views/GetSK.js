@@ -44,18 +44,18 @@ export default class GetSK extends Component {
 				<Tabs locked initialPage={0} tabBarPosition="bottom">
 					<Tab
 						heading="Nội Dung"
-						tabStyle={{ backgroundColor: '#001166' }}
+						tabStyle={{ backgroundColor: '#14a6f9' }}
 						textStyle={{ color: '#fff' }}
-						activeTabStyle={{ backgroundColor: '#001eb3' }}
+						activeTabStyle={{ backgroundColor: '#0099ff' }}
 						activeTextStyle={{ color: '#fff', fontWeight: 'normal' }}
 					>
 						<WebView source={{ uri: $LINK }} />
 					</Tab>
 					<Tab
 						heading="Đăng Ký"
-						tabStyle={{ backgroundColor: '#001166' }}
+						tabStyle={{ backgroundColor: '#14a6f9' }}
 						textStyle={{ color: '#fff' }}
-						activeTabStyle={{ backgroundColor: '#001eb3' }}
+						activeTabStyle={{ backgroundColor: '#0099ff' }}
 						activeTextStyle={{ color: '#fff', fontWeight: 'normal' }}
 					>
 						<Content contentContainerStyle={{ marginTop: 15 }}>
